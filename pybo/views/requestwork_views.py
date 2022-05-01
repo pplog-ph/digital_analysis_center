@@ -1,0 +1,18 @@
+from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
+
+from ..forms import RequestWorkFrom
+
+def request_work(request):
+    if request.method == 'POST':
+        form = RequestWorkFrom(request.POST, request.FILES)
+        if form.is_valid():
+            requestwork = form.save(commit=False)
+            requestwork.create_date = timezone.now()
+            requestwork.end_date = timezone.now()
+            requestwork.save()
+            return redirect('pybo:report_update')
+    else:
+        form = RequestWorkFrom()
+    context = {'form': form}
+    return render(request, 'pybo/requestwork_form.html', context)

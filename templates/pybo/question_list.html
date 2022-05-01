@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load pybo_filter %}
+{% block content %}
+
+<style>
+        .geeks {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .geeks img {
+            width: 100%;
+            transition: 0.5s all ease-in-out;
+        }
+
+        .geeks:hover img {
+            transform: scale(1.04);
+        }
+
+        .parallax {
+        	/* The image used */
+  			background-image: url(https://storage.googleapis.com/bamboo-magnet-314906.appspot.com/etc/subcribe_1.JPG);
+
+  			/* Set a specific height */
+  			min-height: 300px;
+
+  			/* Create the parallax scrolling effect */
+  			background-attachment: fixed;
+  			background-position: 0% 60%;
+  			background-repeat: no-repeat;
+  			background-size: cover;
+		}
+</style>
+
+<!--신규 소제목-->
+<div class="parallax">
+	<p style="color:#ff6f00;font-size:145px;text-align: center;font-weight: 500;height:500px;vertical-align: middle;">Analysis<br>Report</p>
+</div>
+
+<!-- 이전 소제목
+<p style="background-image: url(https://storage.googleapis.com/bamboo-magnet-314906.appspot.com/etc/report_list_main_3.jpg);background-repeat: round space;color:white;font-size: 150px;text-align: center;font-weight: 500;height:500px;vertical-align: middle;">Analysis<br>Report List</p>
+-->
+<br>
+
+<div class="container my-3">
+    <h2>Report List</h2>
+    <div align="right">
+		<a href="{% url 'pybo:report_update' %}" style="font-size:15px;text-decoration:none;vertical-align: top;">
+			<img src="https://storage.googleapis.com/bamboo-magnet-314906.appspot.com/etc/exchange.png" style="vertical-align:-0.02em;" width="12" height="12">
+			Visual View
+		</a>
+    </div>
+	<hr>
+	<br>
+    <table class="table table-hover">
+        <!--
+        <caption style="font-size:13px">리포트 관련 문의 : 커뮤니케이션본부 디지털UX팀 분석파트 김필후 / 김주영</caption>
+        -->
+        <thead>
+        <tr class="bg-primary">
+            <th class="table-active" style="color:white;background-color:#ff6f00;">Num</th>
+            <th class="table-active" style="width:50%;color:white;background-color:#ff6f00;">title</th>
+            <th class="table-active" style="color:white;background-color:#ff6f00;">author</th>
+            <th class="table-active" style="color:white;background-color:#ff6f00;">datetime</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if question_list %}
+        {% for question in question_list %}
+        <tr>
+            <td>
+                <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
+                <!--번호 내림차순
+                {{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}
+                -->
+                {{ forloop.counter0|add:1 }}
+            </td>
+            <td>
+                <a style="text-decoration: none;" href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
+                <!--댓글수 카운트
+                {% if question.answer_set.count > 0 %}
+                <span class="text-danger small mx-2">{{ question.answer_set.count }}</span>
+                {% endif %}
+                -->
+                <!-- 구독자수 카운트 -->
+                {% if question.subscribe_set.count > 0 %}
+                <span class="text-dnager small mx-2">{{ question.subscribe_set.count }}</span>
+                {% endif %}
+
+            </td>
+            <td>{{ question.author.username }}</td>
+            <td>{{ question.create_date }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="4">리포트가 없습니다.</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if question_list.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ question_list.previous_page_number }}">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in question_list.paginator.page_range %}
+        {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
+        {% if page_number == question_list.number %}
+        <li class="page-item active" aria-current="page">
+            <a class="page-link" style="background-color:#FF8000;" href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link" style="background-color:#ff6f00;" href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if question_list.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ question_list.next_page_number }}">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'pybo:question_create' %}" class="btn btn-secondary">Add Report (for admin)</a>
+    {% endif %}
+</div>
+{% endblock %}

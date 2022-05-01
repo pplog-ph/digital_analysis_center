@@ -1,0 +1,54 @@
+<!-- 네비게이션바 -->
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="{% url 'pybo:report_update' %}">
+            <img src = 'https://storage.googleapis.com/bamboo-magnet-314906.appspot.com/etc/digital_analysis_center_4.png' alt="home" height="62">
+        </a>
+
+        <br>
+        <br>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!--숨김처리 테이블형태
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #424242;" href="{% url 'pybo:index' %}">report_list</a>
+                </li>
+                -->
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #424242;margin-left:15px;font-weight: 300;" href="{% url 'pybo:report_update' %}">분석 리포트</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #424242;margin-left:15px;font-weight: 300;" href="{% url 'pybo:requestwork_create' %}">분석업무요청</a>
+                </li>
+
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                    <a class="nav-link" style="color: #424242;margin-left:25px;font-weight: 300;" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
+                    {% else %}
+                    <a class="nav-link" style="color: #424242;margin-left:25px;font-weight: 300;" href="{% url 'common:login' %}">관리자로그인</a>
+                    {% endif %}
+                </li>
+                <!--
+                <li>
+                    {% if not user.is_authenticated %}
+                    <a class="nav-link" style="color: #A4A4A4;" href="{% url 'common:signup' %}">admin join</a>
+                    {% endif %}
+                </li>
+                -->
+            </ul>
+        </div>
+        <img src ="https://storage.googleapis.com/bamboo-magnet-314906.appspot.com/etc/worldvision_orange_logo.png" alt="worldvision logo" width="150">
+    </div>
+</nav>

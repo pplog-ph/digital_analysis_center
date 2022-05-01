@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" xmlns="http://www.w3.org/1999/html">
+    <h5 class="my-3 border-bottom pb-2">보고서 등록</h5>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- 오류표시 Start -->
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+            {% if field.errors %}
+            <div>
+                <strong>{{ field.label }}</strong>
+                {{ field.errors }}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <!-- 오류표시 End -->
+        <div class="mb-3">
+            <label for="subject" class="form-label">제목</label>
+            <input type="text" class="form-control" name="subject" id="subject"
+                   value="{{ form.subject.value|default_if_none:'' }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="content" class="form-label">내용</label>
+            <textarea class="form-control" name="content"
+                      id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="mainphoto" class="form-label">미리보기 이미지 1</label>
+            <br>
+            {% if form.mainphoto.value %}
+                <img src = "{{ form.mainphoto.value.url }}" alt="" height="200">
+                <br>
+
+            {% endif %}
+            <input type="file" class="form-control" name="mainphoto" id="mainphoto"
+                   value="{{ form.mainphoto|default_if_none:'' }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="sub_photo_1" class="form-label">미리보기 이미지 2</label>
+            <br>
+            {% if form.sub_photo_1.value %}
+                <img src = "{{ form.sub_photo_1.value.url }}" alt="" height="200">
+                <br>
+
+            {% endif %}
+            <input type="file" class="form-control" name="sub_photo_1" id="sub_photo_1"
+                   value="{{ form.sub_photo_1|default_if_none:'' }}">
+
+        </div>
+
+        <div class="mb-3">
+            <label for="sub_photo_2" class="form-label">미리보기 이미지 3</label>
+            <br>
+            {% if form.sub_photo_2.value %}
+                <img src = "{{ form.sub_photo_2.value.url }}" alt="" height="200">
+                <br>
+
+            {% endif %}
+            <input type="file" class="form-control" name="sub_photo_2" id="sub_photo_2"
+                   value="{{ form.sub_photo_2|default_if_none:'' }}">
+
+        </div>
+
+        <div class="mb-3">
+            <label for="thumbnail_img" class="form-label">썸네일이미지</label>
+            <br>
+            {% if form.thumbnail_img.value %}
+                <img src = "{{ form.thumbnail_img.value.url }}" alt="" height="200">
+                <br>
+
+            {% endif %}
+            <input type="file" class="form-control" name="thumbnail_img" id="thumbnail_img"
+                   value="{{ form.thumbnail_img|default_if_none:'' }}">
+
+        </div>
+
+        <div class="mb-3">
+            <label for="content_summary" class="form-label">리포트요약소개</label>
+            <textarea class="form-control" name="content_summary"
+                      id="content_summary" rows="10">{{ form.content_summary.value|default_if_none:'' }}</textarea>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">저장하기</button>
+    </form>
+</div>
+{% endblock %}

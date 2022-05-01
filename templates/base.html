@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1, shrink-to-fit=no">
+    <!-- Bootsstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <!-- pybo CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>DAC - WORLD VISION</title>
+</head>
+<body style="padding-top : 70px;">
+<!-- 네비게이션바 -->
+{% include "navbar.html" %}
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+<!-- Bootstrap JS -->
+<script src="{% static 'bootstrap.min.js' %}"></script>
+{% block content %}
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+
+<!-- 자바스크립트 start -->
+{% block script %}
+{% endblock %}
+<!-- 자바스크립트 End -->
+</body>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+    <br>
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+              <img src = 'https://storage.googleapis.com/bamboo-magnet-314906.appspot.com/etc/digital_analysis_center_4.png' alt="home" height="100">
+          </h6>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            바로가기
+          </h6>
+          <p>
+            <a href="{% url 'pybo:report_update' %}" class="text-reset" style="text-decoration: none;">분석리포트</a>
+          </p>
+          <p>
+            <a href="{% url 'pybo:requestwork_create' %}" class="text-reset" style="text-decoration: none;">분석업무요청</a>
+          </p>
+          <p>
+            <a href="{% url 'common:login' %}" class="text-reset" style="text-decoration: none;">관리자로그인</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+            <p><i class="fas fa-home me-2"></i> 커뮤니케이션본부 디지털 UX팀</p>
+          <p style="color:#ff6f00;">
+              <i class="fas fa-envelope me-2"></i>
+              pilhoo_kim@worldvision.or.kr&nbsp;&nbsp;<b>김필후</b>
+          </p>
+          <p style="color:#ff6f00;">
+              <i class="fas fa-envelope me-2"></i>
+              glorytoj@worldvision.or.kr&nbsp;&nbsp;<b>김주영</b>
+          </p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2022 Copyright:
+    <a class="text-reset fw-bold" href="https://www.worldvision.or.kr/">worldvision.or.kr</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+</html>

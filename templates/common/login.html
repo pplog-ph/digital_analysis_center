@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+        .geeks {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .geeks img {
+            width: 100%;
+            transition: 0.5s all ease-in-out;
+        }
+
+        .geeks:hover img {
+            transform: scale(1.08);
+        }
+
+        .parallax {
+        	/* The image used */
+  			background-image: url(https://storage.googleapis.com/bamboo-magnet-314906.appspot.com/etc/login_7.JPG);
+
+  			/* Set a specific height */
+  			min-height: 300px;
+
+  			/* Create the parallax scrolling effect */
+  			background-attachment: fixed;
+  			background-position: 10% 60%;
+  			background-repeat: no-repeat;
+  			background-size: cover;
+		}
+</style>
+
+<!--신규 소제목-->
+<div class="parallax">
+	<p style="color:#ff6f00;font-size:145px;text-align: center;font-weight: 500;height:500px;vertical-align: middle;">Admin<br>Login</p>
+</div>
+
+<br>
+<br>
+<br>
+
+
+
+<div class="container my-3">
+    <form method="post" action="{% url 'common:login' %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{next}}">
+        {% include "form_errors.html" %}
+        <div class="mb-3">
+            <label for="username">Admin ID</label>
+            <input type="text" class="form-control" name="username" id="username"
+                   value="{{ form.username.value|default_if_none:'' }}">
+        </div>
+        <div class="mb-3">
+            <label for="password">password</label>
+            <input type="password" class="form-control" name="password" id="password"
+                   value="{{ form.password.value|default_if_none:'' }}">
+        </div>
+        <button type="submit" class="btn btn-primary" style="background-color: #FF8000; color: #FFFFFF;border: 2px solid #FF8000;">login</button>
+    </form>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}
