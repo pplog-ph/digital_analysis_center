@@ -60,6 +60,7 @@ class RequestWork(models.Model):
     department = models.CharField(max_length=50)
     category_choice = (
         ('ga_analysis', 'WV홈페이지(패밀리사이트) GA 관련 분석'),
+        ('analysis_account', '분석 툴 계정 신청'),
         ('ga_setup', 'Google Analytics 설치 및 추가 행동 데이터 추적'),
         ('optimize', '페이지 UX 최적화(A/B Test)'),
         ('etc', '기타 디지털 분석'),
