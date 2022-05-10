@@ -33,6 +33,7 @@
                     <a class="nav-link" style="color: #424242;margin-left:15px;font-weight: 300;" href="{% url 'pybo:requestwork_create' %}">분석업무요청</a>
                 </li>
 
+
                 <li class="nav-item">
                     {% if user.is_authenticated %}
                     <a class="nav-link" style="color: #424242;margin-left:25px;font-weight: 300;" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
@@ -40,6 +41,7 @@
                     <a class="nav-link" style="color: #424242;margin-left:25px;font-weight: 300;" href="{% url 'common:login' %}">관리자로그인</a>
                     {% endif %}
                 </li>
+
                 <!--
                 <li>
                     {% if not user.is_authenticated %}
