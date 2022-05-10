@@ -86,39 +86,39 @@
                 <option value="etc">기타 디지털 분석</option>
             </select>
         </div>
-
+        <br>
 
         <div class="mb-3">
             <label for="name" class="form-label">이름</label>
             <input type="text" class="form-control" name="name" id="name"
                    value="{{ form.name.value|default_if_none:'' }}">
         </div>
-
+        <br>
         <div class="mb-3">
             <label for="department" class="form-label">부서 / 팀</label>
             <input type="text" class="form-control" name="department" id="department"
                    value="{{ form.department.value|default_if_none:'' }}">
         </div>
-
+        <br>
         <div class="mb-3">
             <label for="subject" class="form-label">제목</label>
             <input type="text" class="form-control" name="subject" id="subject"
                    value="{{ form.subject.value|default_if_none:'' }}">
         </div>
-
+        <br>
         <div class="mb-3">
             <label for="content" class="form-label">내용(계정신청은 '요청분석툴', '구글 메일'을 포함하여 기입 / 급한요청은 요청희망일을 기입)</label>
             <textarea class="form-control" name="content"
                       id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
         </div>
-
+        <br>
         <div>
             분석파트 주요 일정
         </div>
 
         <iframe src="https://calendar.google.com/calendar/embed?height=800&wkst=1&bgcolor=%23F4511E&ctz=Asia%2FSeoul&showTitle=0&showNav=0&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&src=OHJkYWsya2gxMjRpbzI0MmY3Y29wazQ4NW9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23F4511E" style="border-width:0" width="1300" height="800" frameborder="0" scrolling="no"></iframe>
 
-
+        <br>
         <br>
         <button type="submit" class="btn btn-primary" style="background-color: #FF8000; color: #FFFFFF;border: 2px solid #FF8000;">업무요청</button>
     </form>
