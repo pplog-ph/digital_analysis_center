@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 
 from ..forms import RequestWorkFrom
+from django.contrib import messages
 
 def request_work(request):
     if request.method == 'POST':
@@ -11,7 +12,9 @@ def request_work(request):
             requestwork.create_date = timezone.now()
             requestwork.end_date = timezone.now()
             requestwork.save()
+            messages.info(request, '업무요청이 완료되었습니다!')
             return redirect('pybo:report_update')
+
     else:
         form = RequestWorkFrom()
     context = {'form': form}
