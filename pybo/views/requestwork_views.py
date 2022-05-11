@@ -12,7 +12,7 @@ def request_work(request):
             requestwork.create_date = timezone.now()
             requestwork.end_date = timezone.now()
             requestwork.save()
-            messages.info(request, '업무요청이 완료되었습니다!')
+            messages.info(request, '업무요청이 완료되었습니다. 내용 확인 후 사내 메일로 피드백 드릴께요:)')
             return redirect('pybo:report_update')
 
     else:
