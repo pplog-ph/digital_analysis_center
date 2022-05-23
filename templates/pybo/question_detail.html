@@ -124,7 +124,9 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <!--
             <th>이름</th>
+            -->
             <th>부서 / 팀</th>
             <!--
             <th>구글메일</th>
@@ -139,7 +141,9 @@
         {% if question.subscribe_set.all %}
             {% for subscribe in question.subscribe_set.all %}
             <tr>
+                <!--
                 <td>{{ subscribe.name }}</td>
+                -->
                 <td>{{ subscribe.department }}</td>
                 <!--
                 <td>{{ subscribe.google_email }}</td>
