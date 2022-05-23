@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import base_views, question_views, answer_views, subscribe_views, update_views, requestwork_views
+from .views import base_views, question_views, answer_views, subscribe_views, update_views, requestwork_views, analysis_guide_views
 
 app_name = 'pybo'
 
@@ -12,6 +12,7 @@ urlpatterns = [
          update_views.report_update, name='report_update'),   #list 페이지:visual
     path('report/<int:question_id>/',
          base_views.detail, name='detail'),     #report detail 페이지
+
 
     # question_views.py
     path('report/create/',
@@ -40,6 +41,12 @@ urlpatterns = [
     # requestwork_views.py
     path('request/create/',
          requestwork_views.request_work, name='requestwork_create'),        #업무 요청 페이지
+
+
+    # analysis_guide_views.py
+    path('analysis_guide/',
+         analysis_guide_views.report_update, name='analysis_guide'),                     #기초 용어집 페이지
+
 
 
 ]
