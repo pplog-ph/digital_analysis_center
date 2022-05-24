@@ -37,6 +37,7 @@ class SubscribeAdmin(admin.ModelAdmin):
         'question',
         'name',
         'google_email',
+        'wv_email',
     )
 admin.site.register(Subscribe, SubscribeAdmin)
 
