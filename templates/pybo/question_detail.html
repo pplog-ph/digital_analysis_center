@@ -120,51 +120,7 @@
         <span>리포트를 <b>0</b>명이 구독하고 있습니다</span>
         {% endif %}</h2>
 
-    <!--구독자 테이블 -->
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <!--
-            <th>이름</th>
-            -->
-            <th>부서 / 팀</th>
-            <!--
-            <th>구글메일</th>
-            -->
-            <th>월드비전메일</th>
-            <th>보고서</th>
-            <th>구독상태</th>
 
-        </tr>
-        </thead>
-        <tbody>
-        {% if question.subscribe_set.all %}
-            {% for subscribe in question.subscribe_set.all %}
-            <tr>
-                <!--
-                <td>{{ subscribe.name }}</td>
-                -->
-                <td>{{ subscribe.department }}</td>
-                <!--
-                <td>{{ subscribe.google_email }}</td>
-                -->
-                <td>{{ subscribe.wv_email }}</td>
-                <td>{{ subscribe.question }}</td>
-                <td style="background-color:
-                    {% if subscribe.subscribe_state == 'application' %}#FA5858;{% endif %}
-                    {% if subscribe.subscribe_state == 'completed' %}#58ACFA;{% endif %}">
-                    {{ subscribe.subscribe_state }}
-                </td>
-            </tr>
-            {% endfor %}
-        {% else %}
-        <tr>
-            <td colspan="5">구독자가 없습니다.</td>
-        </tr>
-        {% endif %}
-        </tbody>
-    </table>
-    <!--구독자 테이블 종료 -->
 
     <!--전체 구독자 테이블
     <table class="table table-striped">
@@ -200,10 +156,12 @@
         {% endif %}
         </tbody>
     </table>
-    -->
 
     <br>
-    <!-- 답변 -->
+
+
+    <!-- 답변
+    -->
     <h5 class="border-bottom my-3 py-2">{{question.answer_set.count}}개 Version 이 있습니다.</h5>
     {% for answer in question.answer_set.all %}
     <div class="card my-3">
