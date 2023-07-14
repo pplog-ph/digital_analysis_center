@@ -1,6 +1,33 @@
+<!-- 스크롤 효과 -->
+<style>
+  .navbar-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 10px;
+    width: 0;
+    background-color: #FFA500;
+    transition: width 0.3s;
+    z-index: 9999;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var navbarProgressBar = document.createElement('div');
+    navbarProgressBar.classList.add('navbar-progress-bar');
+    document.body.appendChild(navbarProgressBar);
+
+    window.addEventListener('scroll', function() {
+      var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      var pageHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var progressWidth = (scrollPosition / pageHeight) * 100 + '%';
+      navbarProgressBar.style.width = progressWidth;
+    });
+  });
+</script>
+
 <!-- 네비게이션바 -->
-
-
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
 
