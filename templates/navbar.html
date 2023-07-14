@@ -18,43 +18,56 @@
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!--숨김처리 테이블형태
-                <li class="nav-item">
-                    <a class="nav-link" style="color: #424242;" href="{% url 'pybo:index' %}">report_list</a>
-                </li>
-                -->
-                <li class="nav-item">
-                    <a class="nav-link" style="color: #424242;margin-left:15px;font-weight: 300;" href="{% url 'pybo:report_update' %}">분석 리포트</a>
-                </li>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <!--
+              <li class="nav-item">
+                <button class="nav-link btn btn-link" style="color: #424242; margin-left: 15px; font-weight: 300;" onclick="location.href='{% url 'pybo:index' %}'" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='transparent';">
+                report_list
+                </button>
+              </li>
+              -->
+              <li class="nav-item">
+                <button class="nav-link btn btn-link" style="color: #424242; margin-left: 15px; font-weight: 300;" onclick="location.href='{% url 'pybo:report_update' %}'" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='transparent';">
+                분석 리포트
+                </button>
+              </li>
+            <li class="nav-item">
+                <button class="nav-link btn btn-link" style="color: #424242; margin-left: 15px; font-weight: 300;" onclick="location.href='{% url 'pybo:requestwork_create' %}'" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='transparent';">
+                분석업무요청
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link btn btn-link" style="color: #424242; margin-left: 15px; font-weight: 300;" onclick="location.href='{% url 'pybo:analysis_guide' %}'" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='transparent';">
+                GA 기초용어집
+                </button>
+            </li>
+            <li class="nav-item">
+              {% if user.is_authenticated %}
+              <button class="nav-link btn btn-link" style="color: #424242; margin-left: 25px; font-weight: 300;" onclick="location.href='{% url 'common:logout' %}'" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='transparent';">
+                {{ user.username }} (로그아웃)
+              </button>
+              {% else %}
+              <button class="nav-link btn btn-link" style="color: #424242; margin-left: 25px; font-weight: 300;" onclick="location.href='{% url 'common:login' %}'" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='transparent';">
+                관리자로그인
+              </button>
+              {% endif %}
+            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" style="color: #424242;margin-left:15px;font-weight: 300;" href="{% url 'pybo:requestwork_create' %}">분석업무요청</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" style="color: #424242;margin-left:15px;font-weight: 300;" href="{% url 'pybo:analysis_guide' %}">GA 기초용어집</a>
-                </li>
-
-
-                <li class="nav-item">
-                    {% if user.is_authenticated %}
-                    <a class="nav-link" style="color: #424242;margin-left:25px;font-weight: 300;" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
-                    {% else %}
-                    <a class="nav-link" style="color: #424242;margin-left:25px;font-weight: 300;" href="{% url 'common:login' %}">관리자로그인</a>
-                    {% endif %}
-                </li>
-
-                <!--
-                <li>
-                    {% if not user.is_authenticated %}
-                    <a class="nav-link" style="color: #A4A4A4;" href="{% url 'common:signup' %}">admin join</a>
-                    {% endif %}
-                </li>
-                -->
-            </ul>
+            <!--
+            <li>
+              {% if not user.is_authenticated %}
+              <button class="nav-link btn btn-link" style="color: #A4A4A4;" onclick="location.href='{% url 'common:signup' %}'" onmouseover="this.style.backgroundColor='#FFA500';" onmouseout="this.style.backgroundColor='transparent';">
+                admin join
+              </button>
+              {% endif %}
+            </li>
+            -->
+          </ul>
         </div>
+
         <img src ="https://storage.googleapis.com/bamboo-magnet-314906.appspot.com/etc/worldvision_orange_logo.png" alt="worldvision logo" width="150">
     </div>
 </nav>
