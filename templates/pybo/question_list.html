@@ -2,6 +2,7 @@
 {% load pybo_filter %}
 {% block content %}
 
+<!-- 이전 스타일과 제목
 <style>
         .geeks {
             width: 300px;
@@ -32,20 +33,79 @@
   			background-repeat: no-repeat;
   			background-size: cover;
 		}
+
 </style>
 
-<!--신규 소제목-->
 <div class="parallax">
 	<p style="color:#ff6f00;font-size:145px;text-align: center;font-weight: 500;height:500px;vertical-align: middle;">Analysis<br>Report</p>
 </div>
-
-<!-- 이전 소제목
-<p style="background-image: url(https://storage.googleapis.com/bamboo-magnet-314906.appspot.com/etc/report_list_main_3.jpg);background-repeat: round space;color:white;font-size: 150px;text-align: center;font-weight: 500;height:500px;vertical-align: middle;">Analysis<br>Report List</p>
 -->
+
+<style>
+    .geeks {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .geeks video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.5s all ease-in-out;
+    }
+
+    .geeks .overlay-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #FFFFFF;
+        font-size: 145px;
+        font-weight: 500;
+        text-align: center;
+        vertical-align: middle;
+        height:300px;
+    }
+
+    .geeks:hover video {
+        transform: scale(1.04);
+    }
+
+    .parallax {
+        /* Set a specific height */
+        min-height: 300px;
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: 0% 60%;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+
+<div class="parallax">
+    <div class="geeks">
+        <video autoplay muted loop>
+            <source src="https://storage.googleapis.com/bamboo-magnet-314906.appspot.com/dac/ocean.mp4" type="video/mp4">
+            <!-- Add additional sources for other video formats if needed -->
+        </video>
+        <div class="overlay-text">
+            Analysis Report
+        </div>
+    </div>
+</div>
+
+
+
+
 <br>
 
 <div class="container my-3">
     <h2>Report List</h2>
+
     <div align="right">
 		<a href="{% url 'pybo:report_update' %}" style="font-size:15px;text-decoration:none;vertical-align: top;">
 			<img src="https://storage.googleapis.com/bamboo-magnet-314906.appspot.com/etc/exchange.png" style="vertical-align:-0.02em;" width="12" height="12">
