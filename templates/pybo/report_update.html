@@ -143,12 +143,14 @@
 	        	<div class="card-body">
 					<p class="card-text" style="background-image:none;margin-bottom:0.1em;font-weight:500;">{{ question.content_summary }}
 					</p>
+					<!-- 구독자수 카운트 -->
+					<!--
 					<p class="card-text" style="background-image:none;color:#6E6E6E;font-size: 15px;font-weight:500;">
-						<!-- 구독자수 카운트 -->
 						{% if question.subscribe_set.count > 0 %}
                 		구독자 {{ question.subscribe_set.count }}
                 		{% endif %}
 					</p>
+					-->
 	            	<!--
 					<a href="{% url 'pybo:detail' question.id %}" class="btn btn-warning" style="background-color: #FF8000; color: #FFFFFF;border: 2px solid #FF8000;">리포트 자세히보기</a>
 					-->
